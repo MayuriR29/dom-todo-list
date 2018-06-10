@@ -10,34 +10,59 @@ function appendtask(element) {
 	varLi.textContent = element;
 	//first argument of forEach function is the value of array at index i
 	varLi.addEventListener('click', function (event) {
-	varLi.classList.toggle("done");
-	/*When only one argument is present: 
-	Toggle class value; i.e., if class exists 
-	then remove it and return false, if not, then add it and return true. */
-	//
+		varLi.classList.toggle("done");
+		/*When only one argument is present: 
+		Toggle class value; i.e., if class exists 
+		then remove it and return false, if not, then add it and return true. */
+		//
 	});
 
 }
 tasks.forEach(appendtask);
-//### Adding more To-Do items
-function addTodo(){
-	const varInput=document.createElement('input');
-	const varButton=document.createElement('button');
+//Function to add input and button
+function addTodo() {
+	const varInput = document.createElement('input');
+	const varButton = document.createElement('button');
 	document.querySelector('body').appendChild(varInput);
 	document.querySelector('body').appendChild(varButton);
-	varButton.textContent='Add Todo';
+	varButton.textContent = 'Add Todo';
 	
 };
 addTodo();
-document.querySelector('button').addEventListener('click',function(event){
+//addEventListener to view to-do values input by user,as a list 
+document.querySelector('button').addEventListener('click', function (event) {
+	//only if value is entered by user then ,add to the list
+	if (document.querySelector('input').value !== "") {
+		const valueTodo = document.querySelector('input').value;
+		const varLi = document.createElement('li'); //
+		document.querySelector('ul').appendChild(varLi);
+		varLi.textContent = valueTodo;
+		//Toggle class value,of the entered to-do
+		// varLi.addEventListener('click',function(event1){
+		// 	varli.classList.toggle('done');
+		// })
+		//reset the input value to blank
+		document.querySelector('input').value = '';
+		
+	}
+
+});
+//Allow user to create a todo when they press the <kbd>Enter</kbd> key
+document.querySelector('input').addEventListener('keypress',function(event){
+	//only if value is entered by user and enter key is pressed ,add to the list
+	if (document.querySelector('input').value !== "" && event.charCode ===13) {
 	const valueTodo=document.querySelector('input').value;
 	const varLi = document.createElement('li'); //
 	document.querySelector('ul').appendChild(varLi);
 	varLi.textContent = valueTodo;
 	document.querySelector('input').value='';
+	}
 });
 
-
+//Add delete button
+const delButton =document.createElement('button');
+delButton.id='delete';
+document.querySelector('body').appendChild(delButton).textContent='Delete All';
 
 
 
