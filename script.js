@@ -16,7 +16,6 @@ function appendtask(element) {
 		then remove it and return false, if not, then add it and return true. */
 		//
 	});
-
 }
 tasks.forEach(appendtask);
 //Function to add input and button
@@ -25,8 +24,7 @@ function addTodo() {
 	const varButton = document.createElement('button');
 	document.querySelector('body').appendChild(varInput);
 	document.querySelector('body').appendChild(varButton);
-	varButton.textContent = 'Add Todo';
-	
+	varButton.textContent = 'Add Todo';	
 };
 addTodo();
 //addEventListener to view to-do values input by user,as a list 
@@ -35,7 +33,6 @@ document.querySelector('button').addEventListener('click', function (event) {
 	if (document.querySelector('input').value !== "") {
 		onCallEventListener();		
 	}
-
 });
 //Allow user to create a todo when they press the <kbd>Enter</kbd> key
 document.querySelector('input').addEventListener('keypress',function(event){
@@ -58,9 +55,11 @@ function onCallEventListener(){
 	document.querySelector('input').value='';
 }
 //Add delete button
-const delButton =document.createElement('button');
-delButton.id='delete';
-document.querySelector('body').appendChild(delButton).textContent='Delete All';
+function addDelbutton(){
+	const delButton =document.createElement('button');
+	delButton.id='delete';
+	document.querySelector('li').appendChild(delButton).textContent='Delete All';
+}
 
 
 
